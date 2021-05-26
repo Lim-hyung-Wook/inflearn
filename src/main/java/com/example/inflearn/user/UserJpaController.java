@@ -1,5 +1,6 @@
 package com.example.inflearn.user;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
@@ -16,14 +17,17 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/jpa")  //공통 prefix url
 public class UserJpaController {
 
-  @Autowired
-  public UserRepository userRepository;
+  private final UserRepository userRepository;
+  private final PostRepository postRepository;
+//  @Autowired
+//  public UserRepository userRepository;
 
-  @Autowired
-  public PostRepository postRepository;
+//  @Autowired
+//  public PostRepository postRepository;
 
   @GetMapping("/users")
   public List<User> retrieveAllUsers() {
